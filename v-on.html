@@ -7,17 +7,22 @@
 <body>
 	<div id="app">
 		<div v-on:click="alert">click me</div>
+		<button v-on:click="clickMe">click me </button>
 	</div>
 	<script src="./vue/vue.js"></script>
 	<script>
 		var  vm = new Vue({
 			el:"#app",
 			data:{
-
+				name:"hantao"
 			},
 			methods:{
 				alert:function(){
 					alert(13456);
+				},
+				clickMe:function(event){
+					alert(this.name);
+					alert(event.target.tagName);
 				}
 			}
 		});
