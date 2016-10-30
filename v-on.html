@@ -8,6 +8,8 @@
 	<div id="app">
 		<div v-on:click="alert">click me</div>
 		<button v-on:click="clickMe">click me </button>
+		<button v-on:click="say('hello')">hello</button>
+		<button v-on:click="say('good bye')"> good bye</button>
 	</div>
 	<script src="./vue/vue.js"></script>
 	<script>
@@ -23,6 +25,9 @@
 				clickMe:function(event){
 					alert(this.name);
 					alert(event.target.tagName);
+				},
+				say:function(str){
+					alert(str);
 				}
 			}
 		});
