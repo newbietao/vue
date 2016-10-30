@@ -10,13 +10,26 @@
 		<button v-on:click="clickMe">click me </button>
 		<button v-on:click="say('hello')">hello</button>
 		<button v-on:click="say('good bye')"> good bye</button>
+		<a href="aa" v-on:click.prevent="alert" >event decortion</a>
+
+		<div v-on:click="click1" v-bind:style="parent"><div v-on:click.stop="click2" v-bind:style="child">child node</div>parents node</div>
 	</div>
 	<script src="./vue/vue.js"></script>
 	<script>
 		var  vm = new Vue({
 			el:"#app",
 			data:{
-				name:"hantao"
+				name:"hantao",
+				parent:{
+					width:"200px",
+					height:"200px",
+					background:"red"
+				},
+				child:{
+					width:"100px",
+					height:"100px",
+					background:"yellow"
+				}
 			},
 			methods:{
 				alert:function(){
@@ -28,6 +41,12 @@
 				},
 				say:function(str){
 					alert(str);
+				},
+				click1:function(){
+					alert("I`m parent");
+				},
+				click2:function(){
+					alert("child");
 				}
 			}
 		});
