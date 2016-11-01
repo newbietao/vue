@@ -11,7 +11,12 @@
 		<div>---------------------</div>
 		<textarea v-model="textarea" placeholder="place inter text"></textarea>
 		<p>this is:</p>
-		<span>{{textarea}}</span>
+		<span>{{textarea}}</span> <br>
+		
+		<input id="checkbox"type="checkbox" v-model="checked">
+		<label for="checkbox">{{checked}}</label>
+		<br>
+		<div>_________________</div>
 	</div>
 	<script src="./vue/vue.js"></script>
 	<script>
