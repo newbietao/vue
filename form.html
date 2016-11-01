@@ -17,6 +17,13 @@
 		<label for="checkbox">{{checked}}</label>
 		<br>
 		<div>_________________</div>
+		<input type="checkbox" id="zhangsan" value="zhangsan" v-model="checkboxs">
+		<label for="zhangsan">zhangsan</label>
+		<input type="checkbox" id="lisi" value="lisi" v-model="checkboxs">
+		<label for="lisi">lisi</label>
+		<input type="checkbox" id="wangwu" value="wangwu" v-model="checkboxs">
+		<label for="wangwu">wangwu</label>
+		<p>this checkbox:{{checkboxs|json}}</p>
 	</div>
 	<script src="./vue/vue.js"></script>
 	<script>
@@ -24,7 +31,8 @@
 		el:"#app",
 			data:{
 				message:"hello world",
-				textarea:""
+				textarea:"",
+				checkboxs:[],
 			}
 		});
 	</script>
