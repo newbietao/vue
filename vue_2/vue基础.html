@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue基础</title>
+</head>
+<body>
+	<di id="app">
+		<!-- 插值 -->
+		<p>{{message}}</p>
+
+	</div>
+	<script src="../vue/vue2.0.js"></script>
+	<script>
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				message:'hello world!'
+			}
+		});
+
+	</script>
+</body>
+</html>
