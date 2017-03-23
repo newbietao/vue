@@ -3,6 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>vue基础</title>
+	<style>
+		.red{
+			width:200px;
+			height:200px;
+			background: #f00;
+		}
+
+	</style>
 </head>
 <body>
 	<di id="app">
@@ -10,6 +18,8 @@
 		<p>{{message}}</p>
 		<!-- 插入html标签 :使用v-html-->
 		<div v-html="html"></div>
+		<!-- 为html绑定属性：使用v-bind -->
+		<div v-bind:class="red"></div>
 		
 	</div>
 	<script src="../vue/vue2.0.js"></script>
@@ -18,7 +28,8 @@
 			el:"#app",
 			data:{
 				message:'hello world!',
-				html:'<h3>hello world</h3>'
+				html:'<h3>hello world</h3>',
+				red:"red"
 			}
 		});
 
