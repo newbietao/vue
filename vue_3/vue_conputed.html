@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue的计算属性</title>
+    <script src="../vue/vue2.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--计算属性-->
+        <span>{{num}}</span>+<span>{{num2}}</span>={{add}}
+        <!--计算属性也可以使用methods替代-->
+        <span>{{num}}</span>+<span>{{num2}}</span>={{add}}
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                num:1,
+                num2:2
+            },
+            methods:{
+                sum:function(){
+                    return this.num + this.num2;
+                }
+            },
+            computed:{
+                add:function(){
+                    return this.num + this.num2;
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
