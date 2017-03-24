@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue事件</title>
+    <script src="../vue/vue2.0.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <button @click="clickHandle">点我</button>
+        <p>点击次数{{counter}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                counter:0
+            },
+            methods:{
+                clickHandle:function(){
+                    this.counter++;
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
