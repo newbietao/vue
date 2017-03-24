@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue绑定style</title>
+    <script src="../vue/vue2.0.js"></script>
+    <style>
+        .red{
+            width:100px;
+            height:100px;
+            background:red;
+            margin:10px;
+        }
+        .green{
+            width:100px;
+            height:100px;
+            background:green;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:style="red"></div>
+        <div v-bind:style="green"></div>
+        <div v-bind:class="{red:bool}"></div>
+        <div v-bind:class="{green:bool}"></div>
+    </div>
+    <script>
+       var vm = new Vue({
+           el:'#app',
+           data:{
+               bool:true,
+               red:{
+                   width:'100px',
+                   height:'100px',
+                   background:'red',
+                   margin:'10px'
+               },
+               green:{
+                   width:'100px',
+                   height:'100px',
+                   background:'green',
+                   margin:'10px'
+               }
+           }
+       });
+    </script>
+</body>
+</html>
