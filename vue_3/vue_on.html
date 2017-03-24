@@ -10,6 +10,12 @@
     <div id="app">
         <button @click="clickHandle">点我</button>
         <p>点击次数{{counter}}</p>
+        <!--修饰符:阻止默认行为-->
+        <a href="http//:www.baidu.com" @click.prevent = 'prevent_handle'>baidu</a>
+        <!--修饰符：阻止冒泡-->
+        <div @click="say_name">不要点我
+            <button @click.stop="say_name">点我</button>
+        </div>
     </div>
     <script>
         var vm = new Vue({
@@ -20,6 +26,14 @@
             methods:{
                 clickHandle:function(){
                     this.counter++;
+                },
+                prevent_handle:function(){
+                    alert('已经阻止默认行为');
+                },
+                say_name:function(event){
+                    if(event){
+                        alert(event.target.tagName);
+                    }
                 }
             }
 
