@@ -16,6 +16,9 @@
         <div @click="say_name">不要点我
             <button @click.stop="say_name">点我</button>
         </div>
+
+        <!--按键修饰符-->
+        <button v-on:click.ctrl="ctrlHandle">ctrl+click</button>
     </div>
     <script>
         var vm = new Vue({
@@ -34,6 +37,9 @@
                     if(event){
                         alert(event.target.tagName);
                     }
+                },
+                ctrlHandle:function(){
+                    alert('ctrl+click事件');
                 }
             }
 
