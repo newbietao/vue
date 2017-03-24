@@ -9,7 +9,11 @@
 			height:200px;
 			background: #f00;
 		}
-
+		.green{
+			width: 100px;
+			height: 50px;
+			background: #0f0;
+		}
 	</style>
 	<script src="../vue/vue2.0.js"></script>
 </head>
@@ -30,7 +34,15 @@
 		
 		<div v-if='bool'>可以看见我</div>
 		<!-- 例如　：　v-bind -->
-		<a　v-bind:href="url">点我</a>
+		<!-- <a　v-bind:href="url">点我 </a> -->
+		<!-- 上面的例子的:href就是参数，参数是在指令后用冒号指明 -->
+		<!-- 修饰符：是使用半角句号指明的特殊后缀，用于指出一个指令以特殊方式进行执行，例如 -->
+
+		<div　v-on:click='chandle' v-bind:class='red'>子元素
+		    <!-- 指令的修饰符 例如：.stop停止冒泡-->
+			<button v-on:click.stop="chandle2" v-bind:class = 'green'></button>
+		</div>
+		
 		
 	</div>
 	
@@ -41,10 +53,20 @@
 				message:'hello world!',
 				html:'<h3>hello world</h3>',
 				red:"red",
+				green:"green",
 				bool:true,
 				url:"#"
 
+			},
+			methods:{
+				chandle:function(e){
+					alert(e.target);
+				},
+				chandle2:function(e){
+					alert(e.target);
+				}
 			}
+
 		});
 
 	</script>
