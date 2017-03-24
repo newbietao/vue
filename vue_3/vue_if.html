@@ -8,19 +8,32 @@
 <body>
 	<div id="app">
         <!--根据bool的值来判断是否显示-->
+        <!--<div v-if="bool">-->
+            <!--显示我的信息-->
+        <!--</div>-->
+        <!--<div v-else>-->
+            <!--隐藏我-->
+        <!--</div>-->
+
+        <!--v-else-if-->
         <div v-if="bool">
-            显示我的信息
+            条件语句一
+        </div>
+        <div v-else-if="bool1">
+            条件语句二
         </div>
         <div v-else>
-            隐藏我
+            条件语句三
         </div>
+
 
     </div>
     <script>
         var vm = new Vue({
             el:"#app",
             data:{
-                bool:false
+                bool:false,
+                bool1:true
             }
         });
 
