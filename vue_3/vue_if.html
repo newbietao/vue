@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if</title>
+	<script src="../vue/vue2.0.js"></script>
+</head>
+<body>
+	<div id="app">
+        <!--根据bool的值来判断是否显示-->
+        <div v-if="bool">
+            显示我的信息
+        </div>
+        <div v-else>
+            隐藏我
+        </div>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                bool:false
+            }
+        });
+
+    </script>
+</body>
+</html>
