@@ -46,7 +46,9 @@
 		<!-- 用户输入：v-model -->
 		<!-- <input v-model="message"> -->
 		<!-- 过滤器：是一个函数，被用作常见的文本格式化，由管道费‘|’指示 -->
-		<div>{{message|capitalize}}</div>
+		<!-- <div>{{message|capitalize}}</div> -->
+		<!--过滤器可以串联：过滤器是js函数所以可以传参 -->
+		<div>{{message|filter1|filter2('hello','world!')}}</div>
 		
 	</div>
 	
@@ -75,6 +77,14 @@
 					if(!value) return "";
 					value = value.toString();
 					return value.charAt(0).toUpperCase()+value.slice(1);
+				},
+				filter1:function(value){
+					if(!value) return "";
+					value = value.toString();
+					return value.charAt(0).toUpperCase()+value.slice(1);
+				},
+				filter2:function(value,arg1,arg2){
+					return arg1+value+arg2;
 				}
 			}
 
