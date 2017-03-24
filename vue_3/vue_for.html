@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for循环</title>
+    <script src="../vue/vue2.0.js"></script>
+</head>
+<body>
+    <!--v-for指令：　要以　itme in itmes形式进行-->
+    <div id="app">
+        <!--迭代数组-->
+        <div v-for="site in sites">{{site.name}}</div>
+        <!--迭代对象-->
+        <div v-for="value in person">
+            {{value}}
+        </div>
+        <!--迭代整数-->
+        <div v-for="key in 10">
+            {{key}}
+        </div>
+        <!--v-for的其他参数(value,key,index),值、键、索引-->
+        <div v-for="(value,key,index) in person">
+            {{index}}.{{key}}.{{value}}
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                sites:[
+                    {name:"baidu"},
+                    {name:"taobao"},
+                    {name:"tengxun"}
+                ],
+                person:{
+                    name:'zhangsan',
+                    age:23,
+                    height:186
+                }
+
+
+
+
+            }
+
+        });
+    </script>
+</body>
+</html>
