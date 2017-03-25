@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件１</title>
+    <script src="../vue/vue2.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <hello></hello>
+    </div>
+    <script>
+        Vue.component('hello',{
+            template:'<h3>hello world!</h3>'
+        });
+        const vm = new Vue({
+            el:'#app'
+        });
+    </script>
+</body>
+</html>
