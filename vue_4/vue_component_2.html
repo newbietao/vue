@@ -9,16 +9,27 @@
     <div id="app">
         <input type="text" v-model="message">
         <person v-bind:message="message"></person>
+
+        <!--模板的循环-->
+        <ul>
+            <data_list v-for="list in lists" v-bind:message="list"></data_list>
+        </ul>
+
     </div>
     <script>
         Vue.component('person',{
             props:['message'],
             template:"<div>{{message}}</div>"
         });
+        Vue.component('data_list',{
+            props:['message'],
+            template:"<li>{{message}}</li>"
+        });
         var vm = new Vue({
             el:'#app',
             data:{
-                message:'hello'
+                message:'hello',
+                lists:['apple','banana','orange']
             }
         });
     </script>
