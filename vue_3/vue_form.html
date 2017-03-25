@@ -14,7 +14,7 @@
         <p>{{message2}}</p>
 
 
-        <!--单选和复选的双向绑定-->
+        <!--单选框的双向绑定-->
         <label for="book">读书</label>
         <input type="radio" id="book" name="like" v-model="my_like" value="book">
         <label for="music">音乐</label>
@@ -23,6 +23,16 @@
         <input type="radio" id="game" name="like" v-model="my_like" value="game">
         <p>{{my_like}}</p>
 
+
+        <!--复选框的双向绑定-->
+        <label for="apple">苹果</label>
+        <input type="checkbox" id="apple" name="like" v-model="my_food" value="apple">
+        <label for="banana">香蕉</label>
+        <input type="checkbox" id="banana" name="like" v-model="my_food" value="banana">
+        <label for="orange">游戏</label>
+        <input type="checkbox" id="orange" name="like" v-model="my_food" value="orange">
+        <p>{{my_food}}</p>
+
     </div>
     <script>
         const vm = new Vue({
@@ -30,7 +40,8 @@
             data:{
                 message:'hello world!',
                 message2:'我在学习vue',
-                my_like:'book'
+                my_like:'book',
+                my_food:[]
             }
 
         });
