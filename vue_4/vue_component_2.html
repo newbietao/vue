@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件之间传值</title>
+    <script src="../vue/vue2.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <person v-bind:message="message"></person>
+    </div>
+    <script>
+        Vue.component('person',{
+            props:['message'],
+            template:"<div>{{message}}</div>"
+        });
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'hello'
+            }
+        });
+    </script>
+</body>
+</html>
