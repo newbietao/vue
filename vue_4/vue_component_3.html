@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 自定事件</title>
+    <script src="../vue/vue2.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--子组件向父组件传值，需要自定义事件-->
+        <p>{{counter}}</p>
+        <btn v-on:increment="add"></btn>
+
+    </div>
+
+    <script>
+        /*
+        * 子组件向父组件传值的流程以及原理
+        * 1.声明组件时要添加事件监听，例如：v-on:click="increment"
+        * 2.在使用组件时绑定自定义事件，例如：v-on:increment
+        * 3.子组件触发事件并执行回调函数，例如：this.$emit('increment')
+        * 4.在回调函数里触发自定义事件，执行父组件里函数add
+        * 5.add函数对父组件数据进行，处理
+        *
+        *
+        * */
+        Vue.component('btn',{
+            template:'<button v-on:click="increment">{{counter}}</button>',
+            data: function(){//必须是函数
+               return { counter:0 }
+            },
+            methods:{
+                increment:function(){
+                    this.counter++;
+                    this.$emit('increment');
+                }
+            }
+        });
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                counter:0
+            },
+            methods:{
+                add:function(){
+                    this.counter++;
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
