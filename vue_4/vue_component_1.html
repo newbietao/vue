@@ -8,13 +8,19 @@
 <body>
     <div id="app">
         <hello></hello>
+        <component_div></component_div>
     </div>
     <script>
         Vue.component('hello',{
             template:'<h3>hello world!</h3>'
         });
         const vm = new Vue({
-            el:'#app'
+            el:'#app',
+            components:{
+                component_div:{
+                    template:"<div style='width:100px;height:100px;background:red'></div>"
+                }
+            }
         });
     </script>
 </body>
