@@ -36,7 +36,7 @@
 
         <!--下拉选框-->
 
-        <select name="" id="" v-model="select">
+        <select name="" v-model="select">
             <option value="javascript" selected="true">javascript</option>
             <option value="css3">css3</option>
             <option value="html5">html5</option>
@@ -44,6 +44,11 @@
             <option value="vue">vue</option>
         </select>
         <p>{{select}}</p>
+
+
+        <!--表单修饰符-->
+        年龄：<input type="number" v-model.number.trim = 'age'>
+
     </div>
     <script>
         const vm = new Vue({
@@ -53,7 +58,8 @@
                 message2:'我在学习vue',
                 my_like:'book',
                 my_food:[],
-                select:""
+                select:"",
+                age:23
             }
 
         });
