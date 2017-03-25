@@ -16,6 +16,7 @@
 <body>
     <div id="app">
         <div v-bind:class = "green" v-animate></div>
+        <div v-message:hello.world = '1'></div>
     </div>
     <script>
         Vue.directive('animate',{//自定义动画指令
@@ -31,6 +32,12 @@
                 },20)
             }
         });
+
+        Vue.directive('message',{
+            bind:function(el,binding){
+                el.innerHTML = binding.name+':'+binding.value+":"+binding.arg;
+            }
+        })
         var vm = new Vue({
             el:'#app',
             data:{
