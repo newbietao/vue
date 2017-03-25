@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue自定义指令</title>
+    <script src="../vue/vue2.0.js"></script>
+    <style>
+        .green{
+            width:100px;
+            height:100px;
+            background:green;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:class = "green" v-animate></div>
+    </div>
+    <script>
+        Vue.directive('animate',{//自定义动画指令
+            //inserted 钩子函数之一
+            inserted:function(el){//el钩子函数的参数之一
+                var num = 1;
+                var timer = setInterval(function(){
+                    num++;
+                    el.style.left = num + 'px';
+                    if(num>500){
+                       clearInterval(timer);
+                    }
+                },20)
+            }
+        });
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                green:'green'
+            }
+        });
+
+    </script>
+</body>
+</html>
