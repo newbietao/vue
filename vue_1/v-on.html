@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-on</title>
+</head>
+<body>
+	<div id="app">
+		<div v-on:click="alert">click me</div>
+		<button v-on:click="clickMe">click me </button>
+		<button v-on:click="say('hello')">hello</button>
+		<button v-on:click="say('good bye')"> good bye</button>
+		<a href="aa" v-on:click.prevent="alert" >event decortion</a>
+
+		<div v-on:click="click1" v-bind:style="parent"><div v-on:click.stop="click2" v-bind:style="child">child node</div>parents node</div>
+		<ul>
+			<li v-for="i in keycode"><input v-model="$index" v-on:keyup="keyCode($event)"></li>
+		</ul>
+	</div>
+	<script src="../vue/vue.js"></script>
+	<script>
+		var  vm = new Vue({
+			el:"#app",
+			data:{
+				name:"hantao",
+				parent:{
+					width:"200px",
+					height:"200px",
+					background:"red"
+				},
+				child:{
+					width:"100px",
+					height:"100px",
+					background:"yellow"
+				},
+				keycode:[
+					{key:"13"},
+					{key:"up"},
+					{key:"down"},
+					{key:"left"},
+					{key:"right"},
+
+				]
+			},
+			methods:{
+				alert:function(){
+					alert(13456);
+				},
+				clickMe:function(event){
+					alert(this.name);
+					alert(event.target.tagName);
+				},
+				say:function(str){
+					alert(str);
+				},
+				click1:function(){
+					alert("I`m parent");
+				},
+				click2:function(){
+					alert("child");
+				},
+				keyCode:function(event){
+					console.log(event.keyCode);
+				}
+			}
+		});
+	</script>
+</body>
+</html>

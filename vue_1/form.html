@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>form bind</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="message">
+		<p>{{message}}</p> <br>
+		<div>---------------------</div>
+		<textarea v-model="textarea" placeholder="place inter text"></textarea>
+		<p>this is:</p>
+		<span>{{textarea}}</span> <br>
+		
+		<input id="checkbox"type="checkbox" v-model="checked">
+		<label for="checkbox">{{checked}}</label>
+		<br>
+		<div>_________________</div>
+		<input type="checkbox" id="zhangsan" value="zhangsan" v-model="checkboxs">
+		<label for="zhangsan">zhangsan</label>
+		<input type="checkbox" id="lisi" value="lisi" v-model="checkboxs">
+		<label for="lisi">lisi</label>
+		<input type="checkbox" id="wangwu" value="wangwu" v-model="checkboxs">
+		<label for="wangwu">wangwu</label>
+		<p>this checkbox:{{checkboxs|json}}</p>
+		<br>
+		<input type="radio" id="one" value="One" v-model="picked">
+		<label for="one">One</label>
+		<br>
+		<input type="radio" id="two" value="Two" v-model="picked">
+		<label for="two">Two</label>
+		<br>
+		<span>Picked: {{ picked }}</span>
+	</div>
+	<script src="../vue/vue.js"></script>
+	<script>
+		var vm = new Vue({
+		el:"#app",
+			data:{
+				message:"hello world",
+				textarea:"",
+				checkboxs:[],
+			}
+		});
+	</script>
+</body>
+</html>
