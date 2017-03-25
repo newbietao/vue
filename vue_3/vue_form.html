@@ -33,6 +33,17 @@
         <input type="checkbox" id="orange" name="like" v-model="my_food" value="orange">
         <p>{{my_food}}</p>
 
+
+        <!--下拉选框-->
+
+        <select name="" id="" v-model="select">
+            <option value="javascript" selected="true">javascript</option>
+            <option value="css3">css3</option>
+            <option value="html5">html5</option>
+            <option value="jquery">jquery</option>
+            <option value="vue">vue</option>
+        </select>
+        <p>{{select}}</p>
     </div>
     <script>
         const vm = new Vue({
@@ -41,7 +52,8 @@
                 message:'hello world!',
                 message2:'我在学习vue',
                 my_like:'book',
-                my_food:[]
+                my_food:[],
+                select:""
             }
 
         });
