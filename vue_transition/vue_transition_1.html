@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <title>vue动画１</title>
     <style>
-        .fade-enter-active, .fade-leave-active {
-            transition: all .5s
+        p {
+            transition: all .5s;
+            position:relative;
         }
         .fade-enter, .fade-leave-active {
             opacity: 0;
             top:200px;
-            left:200px
+            left:200px;
         }
-        .fade-enter-active,.fade-leave{
-            top:0;
-            left:0;
+        .fade-enter-active,.fade-leave {
+            top:0px;
+            left:0px;
         }
-        p{
-            position:relative;
-        }
+
     </style>
 </head>
 <body>

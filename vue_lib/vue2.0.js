@@ -415,14 +415,14 @@ var isAndroid = UA && UA.indexOf('android') > 0;
 var isIOS = UA && /iphone|ipad|ipod|ios/.test(UA);
 var isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge;
 
-// this needs to be lazy-evaled because vue may be required before
-// vue-server-renderer can set VUE_ENV
+// this needs to be lazy-evaled because vue_lib may be required before
+// vue_lib-server-renderer can set VUE_ENV
 var _isServer;
 var isServerRendering = function () {
   if (_isServer === undefined) {
     /* istanbul ignore if */
     if (!inBrowser && typeof global !== 'undefined') {
-      // detect presence of vue-server-renderer and avoid
+      // detect presence of vue_lib-server-renderer and avoid
       // Webpack shimming the process
       _isServer = global['process'].env.VUE_ENV === 'server';
     } else {
@@ -2127,8 +2127,8 @@ function mountComponent (
     updateComponent = function () {
       var name = vm._name;
       var id = vm._uid;
-      var startTag = "vue-perf-start:" + id;
-      var endTag = "vue-perf-end:" + id;
+      var startTag = "vue_lib-perf-start:" + id;
+      var endTag = "vue_lib-perf-end:" + id;
 
       mark(startTag);
       var vnode = vm._render();
@@ -3012,7 +3012,7 @@ function createComponent (
   // return a placeholder vnode
   var name = Ctor.options.name || tag;
   var vnode = new VNode(
-    ("vue-component-" + (Ctor.cid) + (name ? ("-" + name) : '')),
+    ("vue_lib-component-" + (Ctor.cid) + (name ? ("-" + name) : '')),
     data, undefined, undefined, undefined, context,
     { Ctor: Ctor, propsData: propsData, listeners: listeners, tag: tag, children: children }
   );
@@ -3661,7 +3661,7 @@ function initMixin (Vue) {
   Vue.prototype._init = function (options) {
     /* istanbul ignore if */
     if ("development" !== 'production' && config.performance && mark) {
-      mark('vue-perf-init');
+      mark('vue_lib-perf-init');
     }
 
     var vm = this;
@@ -3700,8 +3700,8 @@ function initMixin (Vue) {
     /* istanbul ignore if */
     if ("development" !== 'production' && config.performance && mark) {
       vm._name = formatComponentName(vm, false);
-      mark('vue-perf-init-end');
-      measure(((vm._name) + " init"), 'vue-perf-init', 'vue-perf-init-end');
+      mark('vue_lib-perf-init-end');
+      measure(((vm._name) + " init"), 'vue_lib-perf-init', 'vue_lib-perf-init-end');
     }
 
     if (vm.$options.el) {
@@ -4956,7 +4956,7 @@ function createPatchFunction (backend) {
   function assertNodeMatch (node, vnode) {
     if (vnode.tag) {
       return (
-        vnode.tag.indexOf('vue-component') === 0 ||
+        vnode.tag.indexOf('vue_lib-component') === 0 ||
         vnode.tag.toLowerCase() === (node.tagName && node.tagName.toLowerCase())
       )
     } else {
@@ -7185,7 +7185,7 @@ setTimeout(function () {
     } else if ("development" !== 'production' && isChrome) {
       console[console.info ? 'info' : 'log'](
         'Download the Vue Devtools extension for a better development experience:\n' +
-        'https://github.com/vuejs/vue-devtools'
+        'https://github.com/vuejs/vue_lib-devtools'
       );
     }
   }

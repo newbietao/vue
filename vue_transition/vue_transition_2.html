@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue动画２</title>
+    <style>
+        .tran-enter-active , .tran-leave-active {
+            transition:all 1s;
+        }
+        .tran-enter , .tran-leave-active {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="show = !show">{{show | isShow}}</button>
+        <transition name="tran">
+            <p v-show="show">{{message}}</p>
+        </transition>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:"hello world!",
+                show:true
+            },
+            filters:{
+                isShow:function(data){
+                    return data?'隐藏':"显示";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

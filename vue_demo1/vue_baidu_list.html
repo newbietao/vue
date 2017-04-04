@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>仿百度下拉框</title>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script src="../vue_lib/vue-resource.min.js"></script>
 </head>
 <body>
-$END$
+    <div id="app">
+        <input type="text" v-model="key_wd" @keyup="search">
+        {{key_wd}}
+        <ul>
+            <li v-for="list in res_arr">{{list}}</li>
+        </ul>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                key_wd:'',
+                res_arr:[]
+            },
+            methods:{
+                search:function(){
+                    this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+                        wd:this.key_wd
+                    },{
+                        jsonp:'cb'
+                    }).then(function(res){
+                        this.res_arr=res.data.s;
+                    },function(){
+
+                    });
+                }
+            }
+        });
+
+    </script>
 </body>
 </html>

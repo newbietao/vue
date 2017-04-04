@@ -3302,7 +3302,7 @@ var expression = Object.freeze({
       // record before-push error stack in debug mode
       /* istanbul ignore if */
       if ('development' !== 'production' && config.debug) {
-        this.prevError = new Error('[vue] async stack trace');
+        this.prevError = new Error('[vue_lib] async stack trace');
       }
       pushWatcher(this);
     }
@@ -5698,7 +5698,7 @@ var template = Object.freeze({
      * Switch dynamic components. May resolve the component
      * asynchronously, and perform transition based on
      * specified transition mode. Accepts a few additional
-     * arguments specifically for vue-router.
+     * arguments specifically for vue_lib-router.
      *
      * The callback is called when the full transition is
      * finished.
@@ -5833,7 +5833,7 @@ var template = Object.freeze({
           _frag: this._frag
         };
         // extra options
-        // in 1.0.0 this is used by vue-router only
+        // in 1.0.0 this is used by vue_lib-router only
         /* istanbul ignore if */
         if (extraOptions) {
           extend(options, extraOptions);
@@ -7044,7 +7044,7 @@ var template = Object.freeze({
     } else if ('development' !== 'production' && containerAttrs) {
       // warn container directives for fragment instances
       var names = containerAttrs.filter(function (attr) {
-        // allow vue-loader/vueify scoped css attributes
+        // allow vue_lib-loader/vueify scoped css attributes
         return attr.name.indexOf('_v-') < 0 &&
         // allow event listeners
         !onRE.test(attr.name) &&
@@ -10063,7 +10063,7 @@ var template = Object.freeze({
       if (devtools) {
         devtools.emit('init', Vue);
       } else if ('development' !== 'production' && inBrowser && /Chrome\/\d+/.test(window.navigator.userAgent)) {
-        console.log('Download the Vue Devtools for a better development experience:\n' + 'https://github.com/vuejs/vue-devtools');
+        console.log('Download the Vue Devtools for a better development experience:\n' + 'https://github.com/vuejs/vue_lib-devtools');
       }
     }
   }, 0);

@@ -15,7 +15,7 @@
 			background: #0f0;
 		}
 	</style>
-	<script src="../vue/vue2.0.js"></script>
+	<script src="../vue_lib/vue2.0.js"></script>
 </head>
 <body>
 	<div id="app">
@@ -50,7 +50,8 @@
 		<!--过滤器可以串联：过滤器是js函数所以可以传参 -->
 		<!-- <div>{{message|filter1|filter2('hello','world!')}}</div> -->
 		<!-- 指令的缩写 v-bind:href 缩写成　:href v-on:click 缩写成　@click-->
-		<a :href="url" @click="cHandle">点我</a>
+		<!--<a :href="url" @click="cHandle">点我</a>-->
+
 	</div>
 	
 	<script>
