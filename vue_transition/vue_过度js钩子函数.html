@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transition_js_钩子函数</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="show = !show">{{show|isShow}}</button>
+        <transition
+            @before-enter="beforeEnter"
+            @enter="Enter"
+            @afterEnter="afterEnter"
+            @before-leave="beforeLeave"
+            @leave="Leave"
+            @after-leave="afterLeave"
+            @enter-cancelled="enterCancelled"
+            @enter-cancelled="enterCancelled"
+
+        >
+            <p v-if="show">{{message}}</p>
+        </transition>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                show:true,
+                message:"hello world!"
+            },
+            filters:{
+                isShow:function(data){
+                    return data?'隐藏':'显示';
+                }
+            },
+            methods:{
+                beforeEnter:function(){
+                    console.log('beforeEnter');
+                },
+                beforeEnter:function(){
+                    console.log('beforeEnter');
+                },
+                Enter:function(){
+                    console.log('Enter');
+                },
+                afterEnter:function(){
+                    console.log('afterEnter');
+                },
+                beforeLeave:function(){
+                    console.log('beforeLeave');
+                },
+                Leave:function(){
+                    console.log('Leave');
+                },
+                afterLeave:function(){
+                    console.log('afterLeave');
+                },
+                enterCancelled:function(){
+                    console.log('enterCancelled');
+                },
+                leaveCancelled:function(){
+                    console.log('leaveCancelled');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue_animation</title>
+    <style>
+        .animate-enter-active{
+            animation: bounce-in .5s;
+        }
+        .animate-leave-active {
+            animation: bounce-out .5s;
+        }
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes bounce-out {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="show = !show">{{show|isShow}}</button>
+        <transition name="animate">
+            <p v-if="show">{{message}}</p>
+        </transition>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                show:true,
+                message:'hello world!'
+            },
+            filters:{
+                isShow:function(data){
+                    return data?"隐藏":"显示";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
