@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue动画１</title>
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: all .5s
+        }
+        .fade-enter, .fade-leave-active {
+            opacity: 0;
+            top:200px;
+            left:200px
+        }
+        .fade-enter-active,.fade-leave{
+            top:0;
+            left:0;
+        }
+        p{
+            position:relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="show=!show">{{show | isShow}}</button>
+        <transition name="fade">
+            <p v-show="show">{{mesage}}</p>
+        </transition>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                show:false,
+                mesage:'hello world'
+            },
+            filters:{
+                isShow:function(show){
+
+                    return show?'隐藏':'显示';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
