@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过度模式</title>
+    <style>
+        .fade-enter-active, .fade-leave-active{
+            transition:all .5s;
+        }
+
+        .fade-leave-active,.fade-enter{
+            transform:translate(20px);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <transition name="fade" mode="out-in">
+            <button v-if="show" v-bind:key="1" @click="show = !show">{{show|isShow}}</button>
+            <button v-else v-bind:key="2" @click="show = !show">{{show|isShow}}</button>
+        </transition>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                show:true
+            },
+            filters:{
+                isShow:function(data){
+                    return data?'隐藏':'显示';
+                }
+            },
+        });
+    </script>
+</body>
+</html>
