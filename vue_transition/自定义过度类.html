@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义过度类</title>
+    <link rel="stylesheet" href="../vue_lib/animate.css">
+</head>
+<body>
+    <div id="app">
+        <button @click="show = !show">{{show|isShow}}</button>
+        <transition
+            name="test"
+            enter-active-class="animated tada"
+            leave-active-class="animated bounceOutRight"
+        >
+            <p v-show="show">{{message}}</p>
+        </transition>
+    </div>
+
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                show:false,
+                message:"hello world!"
+            },
+            filters:{
+                isShow:function(data){
+                    return data?"隐藏":"显示";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
