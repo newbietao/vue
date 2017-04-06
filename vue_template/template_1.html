@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件１</title>
+</head>
+<body>
+    <div id="app">
+        <my-temp></my-temp>
+        <hello-world></hello-world>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        Vue.component("my-temp",{//注册全局组件
+            template:"<h3>hello world!</h3>"
+        });
+        var myTemp = {
+            template:"<h3>hello world!</h3>"
+        }
+        var vm = new Vue({
+            el:'#app',
+            components:{//注册局部组件
+                'hello-world':myTemp
+            }
+
+        });
+    </script>
+</body>
+</html>
