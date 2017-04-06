@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>列表过度1</title>
+    <style>
+        .itme{
+            display: inline-block;
+            margin-left:10px;
+        }
+        .itme{
+            transition: all 1s;
+        }
+        .list-leave-active,.list-enter-active{
+            transition: all 1s;
+        }
+        .list-enter, .list-leave-active {
+            opacity: 0;
+            transform: translateY(30px);
+
+        }
+        .list-leave-active {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="add">add</button>
+        <button @click="remove">remove</button>
+        <transition-group name='list' tag="div">
+            <span v-for="itme in arr" v-bind:key="itme" class="itme">{{itme}}</span>
+        </transition-group>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data : {
+                arr:[1,2,3,4,5],
+                nextNum: 5
+            },
+            methods:{
+                randomIndex: function () {
+                    return Math.floor(Math.random() * this.arr.length)
+                },
+                add: function () {
+                    this.arr.splice(this.randomIndex(), 0, this.nextNum++)
+                },
+                remove: function () {
+                    this.arr.splice(this.randomIndex(), 1)
+                }
+            }
+        });
+    </script>
+</body>
+</html>
