@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件２</title>
+
+</head>
+<body>
+    <div id="app">
+        <my-temp></my-temp>
+        <my-temp></my-temp>
+        <my-temp></my-temp>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        Vue.component('my-temp',{
+            data:function(){//定义data属性，必须是函数
+                return {
+                    count:1
+                }
+            },
+            template:'<button @click="count = count+1">{{count}}</button>',
+            methods:{
+
+            }
+        });
+        var vm = new Vue({
+            el:'#app'
+        });
+    </script>
+</body>
+</html>
