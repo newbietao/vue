@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父组件向子组件传值</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="message">
+        <my-temp :message="message"></my-temp>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        Vue.component('my-temp',{
+            props:['message'],
+            template:'<h3>{{message}}</h3>'
+        });
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:"hello world!"
+            }
+        });
+    </script>
+</body>
+</html>
