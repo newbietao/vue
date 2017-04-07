@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slot分发内容</title>
+</head>
+<body>
+    <div id="app">
+        <my-temp>111</my-temp>
+
+    </div>
+    <template id="temp">
+        <div>
+            <h3>hello world!</h3>
+            <!--使用slot可以接受父组件传过来的内容，如果没有slot父组件即使传过来内容也会
+                被丢弃。-->
+            <slot></slot>
+        </div>
+    </template>
+    <script src="../vue_lib/vue2.0.js"></script>
+
+    <script>
+        Vue.component("my-temp",{
+            template:"#temp"
+        });
+        var vm = new Vue({
+            el:'#app'
+        });
+    </script>
+</body>
+</html>
