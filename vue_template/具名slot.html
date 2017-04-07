@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拥有名字的slot属性</title>
+</head>
+<body>
+    <div id="app">
+        <my-temp>
+            <h3 slot="header">
+                hello world
+            </h3>
+            <div>
+                this is a banner
+            </div>
+            <div slot="footer">
+                <!--插入到footer里-->
+                this is a footer
+            </div>
+        </my-temp>
+    </div>
+    <template id="temp">
+        <div>
+            <!--slot可以设置name属性，父组件的内容可以根据name指定插入的位置-->
+            <slot name="header"></slot>
+            <slot></slot>
+            <slot name="footer"></slot>
+        </div>
+    </template>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        Vue.component("my-temp",{
+            template:"#temp"
+        });
+        var vm = new Vue({
+            el:"#app"
+        });
+    </script>
+</body>
+</html>
