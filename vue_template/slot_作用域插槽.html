@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slot——作用域插槽</title>
+</head>
+<body>
+    <div id="app">
+        <my-temp>
+            <template scope="props">
+                <p>hello from parent</p>
+                <p>{{props.text}}</p>
+            </template>
+        </my-temp>
+    </div>
+    <template id="temp">
+        <div>
+            <slot text="hello from child"></slot>
+        </div>
+    </template>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        Vue.component('my-temp',{
+            template:"#temp"
+        });
+        var vm = new Vue({
+            el:"#app"
+
+        });
+    </script>
+</body>
+</html>
