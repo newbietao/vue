@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>为组件添加原生事件</title>
+</head>
+<body>
+    <div id="app">
+        <my-temp @click.native="hello"></my-temp>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        Vue.component('my-temp',{
+            template:'<button>hello</button>'
+        });
+        var vm = new Vue({
+            el:'#app',
+            methods:{
+                hello:function(){
+                    alert('hello world!');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
