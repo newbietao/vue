@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>兄弟组件通讯</title>
+</head>
+<body>
+    <div id="app">
+        <my-temp1></my-temp1>
+        <my-temp2></my-temp2>
+    </div>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script>
+        var bus = new Vue();//使用一个空的 Vue 实例作为中央事件总线：
+        Vue.component('my-temp1',{
+            data:function(){
+                return{
+                    num:0
+                }
+            },
+            template:"<button @click='add'>{{num}}</button>",
+            created:function(){//在组件的钩子函数里面监听事件
+                var that = this;
+                bus.$on('add2',function(){
+                    that.num++;
+                })
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                    bus.$emit("add1");//在总线上触发事件
+                }
+
+            }
+        });
+        Vue.component('my-temp2',{
+            data:function(){
+                return{
+                    num:0
+                }
+            },
+            template:"<button @click='add'>{{num}}</button>",
+            created:function(){
+                var that = this;
+                bus.$on('add1',function(){
+
+                    that.num++;
+                })
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                    bus.$emit("add2");
+                }
+            }
+        });
+        var vm = new Vue({
+            el:"#app",
+
+        });
+    </script>
+</body>
+</html>
