@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>嵌套路由</title>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script src="../vue_lib/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>嵌套路由</h3>
+        <p>
+            <router-link to="/user/zhangsan/age/29">111</router-link>
+            <router-link to="/user/zhangsan/home/liaoning">222</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+    <script>
+        const user = {
+            template:
+                `<div><div>{{$route.params.username}}</div>
+                <router-view></router-view></div>`
+        };
+        const home = {
+            template:
+                `<div>{{$route.params.home}}</div>
+                `
+        };
+        const age = {
+            template:
+                `<div>{{$route.params.age}}</div>
+                `
+        };
+
+        const routes = [
+            {path:"/user/:username",component:user,
+                children:[
+                {
+                    path:"age/:age",component:age
+                },
+                {
+                    path:"home/:home",component:home
+                }
+            ]}
+        ];
+        const router = new VueRouter({
+            routes
+        });
+        const vm = new Vue({
+            el:"#app",
+            router
+        });
+    </script>
+</body>
+</html>
