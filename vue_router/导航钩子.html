@@ -19,7 +19,12 @@
         const routes = [
             {
                 path:"/user",
-                component:user
+                component:user,
+                beforeEnter:(to,from,next)=>{
+                    console.log(to);
+                    console.log(from);
+                    next();
+                }
             }
         ];
         const router = new VueRouter({
