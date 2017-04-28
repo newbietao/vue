@@ -21,13 +21,19 @@
         <h3>路由过度</h3>
         <router-link to="user">user</router-link>
         <router-link to="home">home</router-link>
-        <transition name="fade">
-            <router-view></router-view>
-        </transition>
+        <!--<transition name="fade"  mode="out-in">-->
+            <!--<router-view></router-view>-->
+        <!--</transition>-->
+        <router-view></router-view>
     </div>
     <script>
         const user = {template:"<div>user</div>"};
-        const home = {template:"<div>home</div>"};
+        const home = {
+            template:
+                `<transition name="fade">
+                    <div>home</div>
+                </transition>`
+        };
         const routes = [
             {path:"/",component:user},
             {path:"/home",component:home},
