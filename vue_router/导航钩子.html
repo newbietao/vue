@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航钩子</title>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script src="../vue_lib/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>全局钩子</h3>
+        <router-link to="/user">触发全局钩子</router-link>
+        <router-view></router-view>
+    </div>
+    <script>
+        const user = {
+            template:"<div>hello</div>"
+        };
+        const routes = [
+            {
+                path:"/user",
+                component:user
+            }
+        ];
+        const router = new VueRouter({
+            routes
+        });
+        router.beforeEach(function(to,from,next){
+            console.log(to);
+            console.log(from);
+            next();
+        });
+        const vm = new Vue({
+            el:"#app",
+            router
+        });
+    </script>
+</body>
+</html>
