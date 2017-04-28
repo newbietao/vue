@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路由过度</title>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script src="../vue_lib/vue-router.js"></script>
+    <style>
+        .fade-enter-active, .fade-leave-active{
+            transition:all .5s;
+        }
+
+        .fade-leave-active,.fade-enter{
+            transform:translate(20px);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h3>路由过度</h3>
+        <router-link to="user">user</router-link>
+        <router-link to="home">home</router-link>
+        <transition name="fade">
+            <router-view></router-view>
+        </transition>
+    </div>
+    <script>
+        const user = {template:"<div>user</div>"};
+        const home = {template:"<div>home</div>"};
+        const routes = [
+            {path:"/",component:user},
+            {path:"/home",component:home},
+            {path:"/user",component:user},
+        ];
+        const router = new VueRouter({
+            routes
+        });
+        const vm = new Vue({
+            el:"#app",
+            router
+        });
+    </script>
+</body>
+</html>
