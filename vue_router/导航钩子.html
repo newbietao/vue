@@ -9,20 +9,37 @@
 <body>
     <div id="app">
         <h3>全局钩子</h3>
-        <router-link to="/user">触发全局钩子</router-link>
+        <router-link to="/user/23">触发全局钩子</router-link>
+        <router-link to="/user/24">触发全局钩子</router-link>
         <router-view></router-view>
     </div>
     <script>
         const user = {
-            template:"<div>hello</div>"
+            template:"<div>{{$route.params.userid}}</div>",
+            beforeRouteEnter:(to,from,next)=>{
+                console.log(3+":"+to.path);
+                console.log(3+":"+from.path);
+                next();
+            },
+            beforeRouteUpdate:(to,from,next)=>{
+                console.log(4+":"+to.path);
+                console.log(4+":"+from.path);
+                next();
+            },
+            beforeRouteLeave:(to,from,next)=>{
+                console.log(5+":"+to.path);
+                console.log(5+":"+from.path);
+                next();
+            }
+
         };
         const routes = [
             {
-                path:"/user",
+                path:"/user/:userid",
                 component:user,
                 beforeEnter:(to,from,next)=>{
-                    console.log(to);
-                    console.log(from);
+                    console.log(2+":"+to.path);
+                    console.log(2+":"+from.path);
                     next();
                 }
             }
@@ -31,8 +48,8 @@
             routes
         });
         router.beforeEach(function(to,from,next){
-            console.log(to);
-            console.log(from);
+            console.log(1+":"+to.path);
+            console.log(1+":"+from.path);
             next();
         });
         const vm = new Vue({
