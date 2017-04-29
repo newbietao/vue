@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios和路由搭配</title>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script src="../vue_lib/vue-router.js"></script>
+    <script src="../vue_lib/axios.js"></script>
+    <style>
+        .fade-enter-active , .fade-leave-active {
+            transition:all 1s;
+        }
+        .fade-enter , .fade-leave-active {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h3>axios和路由搭配</h3>
+        <router-link to="/user">user</router-link>
+        <router-link to="/home">home</router-link>
+        <transition name="fade" mode="out-in">
+            <router-view></router-view>
+        </transition>
+    </div>
+    <script>
+        Vue.axios = axios;
+        const user = {
+            template:"<div>{{message}}</div>",
+            data(){
+                return{
+                    message:""
+                }
+            },
+            created(){
+                var that = this;
+                Vue.axios.get("server/data.php?type=user").then(function(res){
+                    that.message = res.data;
+                    next();
+                }).catch(function(err){
+                    console.log(err);
+                });
+            }
+
+        };
+        const home = {
+            template:"<div>{{message}}</div>",
+            data(){
+                return{
+                    message:""
+                }
+            },
+            created(){
+                var that = this;
+                Vue.axios.get("server/data.php?type=home").then(function(res){
+                    that.message = res.data;
+                    next();
+                }).catch(function(err){
+                    console.log(err);
+                });
+            }
+
+        }
+        const routes = [
+            {
+                path:"/user",
+                component:user,
+
+            },
+            {
+                path:"/home",
+                component:home,
+
+            }
+        ];
+        const router = new VueRouter({
+            routes
+        });
+        const vm = new Vue({
+            el:"#app",
+            router
+        });
+    </script>
+
+</body>
+</html>
