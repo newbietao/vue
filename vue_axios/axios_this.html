@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios的this指向问题</title>
+    <script src="../vue_lib/vue2.0.js"></script>
+    <script src="../vue_lib/axios.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="update">更新数据</button>
+        <div>{{message}}</div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:"#app",
+            data:{
+                message:""
+            },
+            methods:{
+                update(){
+                    //使用箭头函数可以结局this指向问题
+                    axios.get("server/test.php").then((res)=>{
+                        this.message = res.data;
+                    }).catch(function(err){
+                         console.log(err);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
