@@ -25,6 +25,9 @@ module.exports =
             //这里肯定要加入n个loader 譬如vue-loader、babel-loader、css-loader等等
         ]
     },
+    devServer: {
+        contentBase: 'webapp/'
+    },
     plugins:[
         new HtmlWebpackPlugin({
             filename: __dirname+'/webapp/index.html',   //目标文件
