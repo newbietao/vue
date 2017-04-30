@@ -20,9 +20,10 @@ module.exports =
 
     },
     module:{
-        loaders:[
+        rules:[
             {test:/\.js$/,loader:"babel-loader",query:{compact:true}},
             //这里肯定要加入n个loader 譬如vue-loader、babel-loader、css-loader等等
+            {test:/\.vue$/,loader:"babel-loader!vue-loader",exclude:"/node_modules/"}
         ]
     },
     devServer: {
