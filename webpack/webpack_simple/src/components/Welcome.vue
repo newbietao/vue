@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>welcome to vue!</h3>
-        <button @click="add">点我加一</button>
+        <button @click="add" class="btn btn-info">点我加一</button>
         <div>{{count}}</div>
     </div>
 </template>
