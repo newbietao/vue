@@ -5,12 +5,26 @@
     <title>动态路由</title>
     <script src="../vue_lib/vue2.0.js"></script>
     <script src="../vue_lib/vue-router.js"></script>
+    <style>
+        .tran-enter-active , .tran-leave-active {
+            transition:all 1s;
+        }
+        .tran-enter , .tran-leave-active {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <h3>动态路由</h3>
-        <p><router-link to="/user/23">user</router-link></p>
-        <router-view></router-view>
+        <p>
+            <router-link to="/user/23">user</router-link>
+            <router-link to="/user/20">user</router-link>
+        </p>
+        <transition name="tran">
+            <router-view></router-view>
+        </transition>
     </div>
     <script>
         const user = {template:"<div>{{$route.params.userid}}</div>"};
