@@ -7,12 +7,14 @@
 <body>
     <div id="app">
         {{count}}
-        <my-temp @add="add"></my-temp>
+        <my-temp2></my-temp2>
+        <my-temp1></my-temp1>
     </div>
 
     <script src="../vue_lib/vue2.0.js"></script>
     <script>
-        Vue.component("my-temp",{
+        var bus = new Vue();
+        Vue.component("my-temp1",{
             data:function(){
                 return {
                     count:1
@@ -21,9 +23,31 @@
             template:"<button @click='add'>{{count}}</button>",
             methods:{
                 add:function(){
-                    this.count++;
-                    this.$emit("add");
+                    bus.$emit("add");
                 }
+            },
+            mounted(){
+                bus.$on("add",()=>{
+                    this.count++;
+                });
+            }
+        });
+        Vue.component("my-temp2",{
+            data:function(){
+                return {
+                    count:1
+                }
+            },
+            template:"<button @click='add'>{{count}}</button>",
+            methods:{
+                add(){
+                    bus.$emit("add");
+                }
+            },
+            mounted(){
+                bus.$on("add",()=>{
+                    this.count++;
+                });
             }
         });
         var vm = new Vue({
@@ -31,10 +55,10 @@
             data:{
                 count:1
             },
-            methods:{
-                add:function(){
+            mounted(){
+                bus.$on('add',()=>{
                     this.count++;
-                }
+                });
             }
 
         });
